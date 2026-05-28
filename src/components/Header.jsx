@@ -14,6 +14,19 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Fallback if not on home page
+      window.location.href = "/" + href;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "portofolio", "contact"];
@@ -54,7 +67,7 @@ function Header() {
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-5xl rounded-2xl border-2 border-black dark:border-white bg-white/90 dark:bg-[#1e1e1e]/90 backdrop-blur-md px-6 py-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.7)] transition-all duration-300">
       <div className="flex items-center justify-between relative">
-        <a href="#home" className="text-lg font-black text-black dark:text-white uppercase tracking-tight flex items-center">
+        <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="text-lg font-black text-black dark:text-white uppercase tracking-tight flex items-center">
           Diandra
           <span className="bg-[#a855f7] text-white px-2 py-0.5 ml-1.5 border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] rounded-md text-xs">Frzaa.</span>
         </a>
@@ -78,7 +91,7 @@ function Header() {
               <li key={link.href} className="w-full lg:w-auto flex items-center">
                 <a
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`block lg:inline-block whitespace-nowrap text-lg font-black uppercase tracking-tight transition-all duration-150
                   ${activeSection === link.href ? "text-[#a855f7] border-b-2 border-[#a855f7]" : "text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:border-b-2 hover:border-transparent dark:hover:border-transparent"}`}
                 >

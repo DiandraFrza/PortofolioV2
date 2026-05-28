@@ -9,6 +9,14 @@ import { GoProjectSymlink, GoShieldCheck, GoTrophy, GoTerminal, GoDatabase, GoGe
 import { fetchCollection } from "../supabase/services";
 
 function About() {
+  const handleScrollClick = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const [stats, setStats] = useState({
     projects: "0",
     certificates: "0",
@@ -96,7 +104,7 @@ function About() {
               <span>Download CV</span>
             </a>
 
-            <a href="#portofolio" className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn-white text-center text-sm" data-aos="fade-up" data-aos-delay="100">
+            <a href="#portofolio" onClick={(e) => handleScrollClick(e, 'portofolio')} className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn-white text-center text-sm" data-aos="fade-up" data-aos-delay="100">
               <img src={iconproject} alt="Project Icon" className="w-5 h-5 inline-block mr-2 ml-1 brightness-0" />
               <span>Lihat Proyek</span>
             </a>

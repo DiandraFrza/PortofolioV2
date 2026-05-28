@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { FiGithub, FiExternalLink, FiPlusCircle } from "react-icons/fi";
 import AlertPopup from "./AlertPopup";
 import { fetchCollection } from "../supabase/services";
+import ImageModal from "./ImageModal";
 
 import donghubCloneImg from "../assets/project/donghubclone.png";
 import laundryAppImg from "../assets/project/laundryapp.png";
@@ -17,14 +18,15 @@ import spektrumImg from "../assets/project/wmsSpektrum.png";
 import TFaceAPIImg from "../assets/img/31343C.svg";
 import wmsImg from "../assets/img/31343C.svg";
 
-const ProjectCard = ({ imageUrl, title, description, tech, githubUrl, onDemoClick }) => {
+const ProjectCard = ({ imageUrl, title, description, tech, githubUrl, onDemoClick, onImageClick }) => {
   return (
     <div className="neo-card rounded-2xl p-5 flex flex-col h-full bg-white dark:bg-zinc-800 text-[#202020] dark:text-white" data-aos="fade-up">
       <div className="border-3 border-[#202020] dark:border-white rounded-xl mb-4 overflow-hidden h-48 w-full shadow-[2px_2px_0px_rgba(0,0,0,1)]">
         <img
           src={imageUrl}
           alt={title}
-          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+          onClick={onImageClick}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found";
@@ -150,6 +152,7 @@ const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4);
   const [popupMessage, setPopupMessage] = useState("");
+  const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -180,6 +183,13 @@ const Projects = () => {
   return (
     <section id="projects" className="mt-8">
       <AlertPopup isOpen={!!popupMessage} message={popupMessage} onClose={() => setPopupMessage("")} />
+      
+      <ImageModal 
+        isOpen={!!modalImage} 
+        imageUrl={modalImage?.url} 
+        title={modalImage?.title} 
+        onClose={() => setModalImage(null)} 
+      />
 
       <div className="mb-12 text-center animate-fade-down" data-aos="fade-down">
         <h3 className="text-3xl sm:text-5xl font-[#202020] uppercase text-[#202020] dark:text-white tracking-tight">Projects Made</h3>
@@ -200,6 +210,7 @@ const Projects = () => {
                 tech={project.tech || "Various"} 
                 githubUrl={project.githubLink || project.githubUrl || "#"} 
                 onDemoClick={() => handleDemoClick(project.demoLink || project.link || project.demoUrl)} 
+                onImageClick={() => setModalImage({ url: project.imgSrc || project.imageUrl, title: project.title })}
               />
             ))}
           </div>

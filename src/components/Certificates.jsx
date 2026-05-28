@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import CertificateCard from "./CertificateCard";
 import { fetchCollection } from "../supabase/services";
+import ImageModal from "./ImageModal";
 
 import certSpektrum from "../assets/certificate/spektrum.jpeg";
 import certCyberlabs from "../assets/certificate/cyberlabs.jpeg";
@@ -53,6 +54,7 @@ const defaultCertificates = [
 function Certificates() {
   const [certificates, setCertificates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     const loadCertificates = async () => {
@@ -71,6 +73,13 @@ function Certificates() {
 
   return (
     <div id="certificates" className="mt-8" data-aos="fade-up">
+      <ImageModal 
+        isOpen={!!modalImage} 
+        imageUrl={modalImage?.url} 
+        title={modalImage?.title} 
+        onClose={() => setModalImage(null)} 
+      />
+
       <div className="mb-12 text-center" data-aos="fade-down">
         <h3 className="text-3xl sm:text-5xl font-[#202020] uppercase text-[#202020] dark:text-white tracking-tight">My Certificates</h3>
         <p className="text-zinc-600 dark:text-zinc-400 font-bold max-w-md mx-auto mt-2">Bukti sertifikasi formal dan pelatihan profesional yang telah saya selesaikan.</p>
@@ -88,6 +97,7 @@ function Certificates() {
               issuer={cert.issuer} 
               credentialUrl={cert.credentialUrl} 
               aosDelay={cert.aosDelay || "100"} 
+              onImageClick={() => setModalImage({ url: cert.imgSrc, title: cert.title })}
             />
           ))}
         </div>
