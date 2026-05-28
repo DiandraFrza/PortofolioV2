@@ -1,0 +1,3 @@
+title,description,tech,demoLink,githubLink,imgSrc
+"Portfolio Website","Website portfolio pribadi modern","[""React"",""Tailwind CSS"",""Framer Motion""]","https://your-demo-link.com","https://github.com/username/project","/images/projects/portfolio.png"
+"E-Commerce App","Aplikasi toko online fullstack","[""Next.js"",""Supabase"",""Stripe""]","https://shop-demo.com","https://github.com/username/ecommerce","/images/projects/ecommerce.png"

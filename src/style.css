@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --color-electro-purple: #a855f7;
+  --color-electro-purple-light: #c084fc;
+  --color-electro-purple-dark: #7e22ce;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-sizing: border-box;
+}
+
+/* Allow text selection in inputs and textareas */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hamburger Menu Icon styling */
+#hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #000000;
+  transition: all 300ms ease-in-out;
+  border-radius: 2px;
+}
+
+.dark #hamburger span {
+  background-color: #ffffff;
+}
+
+.hamburger-active > span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-active > span:nth-child(2) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.hamburger-active > span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Neobrutalism & Cartoon custom utilities */
+.neo-border {
+  border: 3px solid #000000;
+}
+
+.dark .neo-border {
+  border: 3px solid #ffffff;
+}
+
+.neo-border-thick {
+  border: 4px solid #000000;
+}
+
+.dark .neo-border-thick {
+  border: 4px solid #ffffff;
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+
+.dark .neo-shadow {
+  box-shadow: 4px 4px 0px 0px #ffffff;
+}
+
+.neo-shadow-lg {
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.dark .neo-shadow-lg {
+  box-shadow: 8px 8px 0px 0px #ffffff;
+}
+
+.neo-shadow-purple {
+  box-shadow: 4px 4px 0px 0px #a855f7;
+}
+
+.neo-shadow-purple-lg {
+  box-shadow: 8px 8px 0px 0px #a855f7;
+}
+
+/* Neobrutalist Cards */
+.neo-card {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 5px 5px 0px 0px #000000;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dark .neo-card {
+  background-color: #1e1e1e;
+  border: 3px solid #ffffff;
+  box-shadow: 5px 5px 0px 0px #ffffff;
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.dark .neo-card:hover {
+  box-shadow: 8px 8px 0px 0px #ffffff;
+}
+
+/* Neobrutalist Purple Cards */
+.neo-card-purple {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 5px 5px 0px 0px #a855f7;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dark .neo-card-purple {
+  background-color: #1e1e1e;
+  border: 3px solid #ffffff;
+  box-shadow: 5px 5px 0px 0px #a855f7;
+}
+
+.neo-card-purple:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px 0px #a855f7;
+}
+
+/* Neobrutalist Buttons */
+.neo-btn {
+  background-color: #a855f7;
+  color: #000000;
+  font-weight: 700;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  transition: all 0.1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dark .neo-btn {
+  border: 3px solid #ffffff;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  color: #000000; /* Keep text dark for high contrast in buttons */
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000000;
+}
+
+.dark .neo-btn:hover {
+  box-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+.dark .neo-btn:active {
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+/* Neobrutalist White/Neutral Buttons */
+.neo-btn-white {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  transition: all 0.1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dark .neo-btn-white {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+}
+
+.neo-btn-white:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000000;
+  background-color: #f4f4f5;
+}
+
+.dark .neo-btn-white:hover {
+  box-shadow: 6px 6px 0px 0px #ffffff;
+  background-color: #27272a;
+}
+
+.neo-btn-white:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+.dark .neo-btn-white:active {
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+/* Cartoon Badge */
+.neo-badge {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px 0px #000000;
+  transition: all 0.15s ease-in-out;
+}
+
+.dark .neo-badge {
+  background-color: #27272a;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 2px 2px 0px 0px #ffffff;
+}
+
+.neo-badge:hover {
+  background-color: #a855f7;
+  color: #000000;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
+.dark .neo-badge:hover {
+  color: #000000;
+  box-shadow: 3px 3px 0px 0px #ffffff;
+}
+
+/* Input Fields Neobrutalism */
+.neo-input {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+.dark .neo-input {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  box-shadow: 3px 3px 0px 0px #ffffff;
+}
+
+.neo-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 5px 5px 0px 0px #a855f7;
+  transform: translate(-2px, -2px);
+}
+
+.dark .neo-input:focus {
+  border-color: #a855f7;
+  box-shadow: 5px 5px 0px 0px #a855f7;
+}
+
+/* Halftone/Comic Dotted Overlay Effect (Optional decoration) */
+.cartoon-dots {
+  background-image: radial-gradient(#000000 20%, transparent 20%);
+  background-size: 10px 10px;
+  opacity: 0.05;
+}
+
+.dark .cartoon-dots {
+  background-image: radial-gradient(#ffffff 20%, transparent 20%);
+}
+
+/* Scrambling reveal text animation helpers */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 0.8s infinite steps(2, start);
+  color: #a855f7;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* Custom AOS modifications for Neobrutalism */
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
