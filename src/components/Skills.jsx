@@ -52,28 +52,30 @@ function Skills() {
     const loadSkills = async () => {
       setIsLoading(true);
       const data = await fetchCollection("skills");
-      
+
       if (data.length > 0) {
-        const newCategories = data.map(skill => {
-          // skill.items is an array of strings e.g. ["React", "Node.js"]
-          const itemsArray = Array.isArray(skill.items) ? skill.items : [];
-          
-          return {
-            title: skill.category,
-            skills: itemsArray.map(itemName => ({
-              name: itemName,
-              icon: <FiCode size={18} />
-            }))
-          };
-        }).filter(cat => cat.skills.length > 0);
-        
+        const newCategories = data
+          .map((skill) => {
+            // skill.items is an array of strings e.g. ["React", "Node.js"]
+            const itemsArray = Array.isArray(skill.items) ? skill.items : [];
+
+            return {
+              title: skill.category,
+              skills: itemsArray.map((itemName) => ({
+                name: itemName,
+                icon: <FiCode size={18} />,
+              })),
+            };
+          })
+          .filter((cat) => cat.skills.length > 0);
+
         setCategories(newCategories.length > 0 ? newCategories : defaultSkillCategories);
       } else {
         setCategories(defaultSkillCategories);
       }
       setIsLoading(false);
     };
-    
+
     loadSkills();
   }, []);
 

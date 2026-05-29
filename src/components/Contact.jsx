@@ -7,19 +7,15 @@ import { addDocument, subscribeToComments } from "../supabase/services";
 import toast from "react-hot-toast";
 
 /* =========================
-   TERMINAL COMPONENT
+    TERMINAL COMPONENT
 ========================= */
 
 const DeletingTerminal = memo(({ scrollY, mousePos }) => {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    let count = 0;
-
     const interval = setInterval(() => {
-      count++;
-
-      const files = ["system32/config.sys", "react/dom.js", "neo-brutalism/shadows.css", "user/memories.dat", "database/comments.db"];
+      const files = ["system32/config.sys", "react/dom.js", "neo-brutalism/shadows.css", "user/memories.dat", "database/comments.db,", "windows/registry.reg", "app/cache/tempfiles.tmp", "bin/important.dll", "boot/loader.sys", "logs/error.log"];
 
       const file = files[Math.floor(Math.random() * files.length)];
 
@@ -148,7 +144,7 @@ function Contact() {
   }, []);
 
   /* =========================
-     CONTACT SUBMIT
+      CONTACT SUBMIT
   ========================= */
 
   const handleContactSubmit = async (e) => {

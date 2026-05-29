@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import React, { useState, useEffect } from "react";
-import profilePicture from "../assets/me.png";
+import profilePicture from "../assets/diandra.png";
 import { TypeAnimation } from "react-type-animation";
 import iconSign from "../assets/img/icon/up_sign.svg";
 import iconHi from "../assets/img/icon/hi.svg";
