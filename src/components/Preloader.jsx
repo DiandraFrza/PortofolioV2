@@ -63,7 +63,7 @@ function Preloader() {
               <span className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] border-2 border-black dark:border-white"></span>
               <span className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border-2 border-black dark:border-white"></span>
             </div>
-            <span className="text-xs font-black font-mono text-black dark:text-white uppercase tracking-wider">AI_Thinking_Console.exe</span>
+            <span className="text-xs font-black font-mono text-black dark:text-white uppercase tracking-wider">CAI_Console.exe</span>
           </div>
 
           {/* Console Output Screen */}
@@ -86,10 +86,7 @@ function Preloader() {
               <span className="text-sm font-black text-black dark:text-white">{Math.floor(progress)}%</span>
             </div>
             <div className="w-full h-8 neo-border bg-white dark:bg-zinc-800 rounded-lg overflow-hidden relative">
-              <div
-                className={`h-full bg-[#a855f7] transition-all duration-150 ease-out ${progress > 0 && progress < 100 ? 'border-r-3 border-black dark:border-white' : ''}`}
-                style={{ width: `${progress}%` }}
-              ></div>
+              <div className={`h-full bg-[#a855f7] transition-all duration-150 ease-out ${progress > 0 && progress < 100 ? "border-r-3 border-black dark:border-white" : ""}`} style={{ width: `${progress}%` }}></div>
             </div>
           </div>
         </div>
