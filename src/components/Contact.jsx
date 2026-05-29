@@ -322,23 +322,34 @@ function Contact() {
             <div className="flex-1 overflow-y-auto pr-2 space-y-4 max-h-[400px] custom-scrollbar">
               {comments.length === 0 && <div className="text-center text-sm font-bold text-zinc-500 py-8">Belum ada komentar.</div>}
 
-              {comments.map((comment) => (
-                <div key={comment.id} className="neo-card-purple p-4 rounded-xl flex gap-4 bg-zinc-50 dark:bg-zinc-800/50">
-                  <div className="w-10 h-10 rounded-full border-2 border-black dark:border-white overflow-hidden bg-white shrink-0">
-                    <img src={comment.avatar} alt={comment.name} className="w-full h-full object-cover" />
-                  </div>
-
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-1">
-                      <h4 className="font-black text-sm text-[#121212] dark:text-white">{comment.name}</h4>
-
-                      <span className="text-[10px] font-bold text-zinc-500">{comment.createdAt ? new Date(comment.createdAt).toLocaleDateString() : "Baru saja"}</span>
+              {comments
+                .sort((a, b) => {
+                  // Pinned comments first, then by date (newest first)
+                  if (a.pinned === b.pinned) {
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+                  }
+                  return a.pinned ? -1 : 1;
+                })
+                .map((comment) => (
+                  <div key={comment.id} className={`neo-card-purple p-4 rounded-xl flex gap-4 ${comment.pinned ? "bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400" : "bg-zinc-50 dark:bg-zinc-800/50"}`}>
+                    <div className="w-10 h-10 rounded-full border-2 border-black dark:border-white overflow-hidden bg-white shrink-0">
+                      <img src={comment.avatar} alt={comment.name} className="w-full h-full object-cover" />
                     </div>
 
-                    <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300">{comment.text}</p>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-1">
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-black text-sm text-[#121212] dark:text-white">{comment.name}</h4>
+                          {comment.pinned && <span className="text-yellow-500 text-xs font-black">📌</span>}
+                        </div>
+
+                        <span className="text-[10px] font-bold text-zinc-500">{comment.createdAt ? new Date(comment.createdAt).toLocaleDateString() : "Baru saja"}</span>
+                      </div>
+
+                      <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300">{comment.text}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>

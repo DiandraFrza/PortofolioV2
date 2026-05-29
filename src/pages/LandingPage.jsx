@@ -43,7 +43,7 @@ function LandingPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#fdfdfd] dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
+    <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#fdfdfd] dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
       {/* Dynamic background grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.04] dark:opacity-[0.025] z-0"
