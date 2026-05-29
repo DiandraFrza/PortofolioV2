@@ -80,7 +80,7 @@ function ParallaxRobot() {
 
         {/* speech bubble for logs */}
         <div className="mt-4 bg-zinc-950 text-green-400 font-mono text-[9px] border-2 border-black rounded-lg p-2.5 w-full relative">
-          <div className="absolute top-[-7px] left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-950 border-t-2 border-l-2 border-black rotate-45"></div>
+          <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-950 border-t-2 border-l-2 border-black rotate-45"></div>
 
           <div className="flex justify-between border-b border-zinc-800 pb-1 mb-1.5 font-bold">
             <span className="text-red-400 font-black">🤖 BOT_SYSTEM:</span>

@@ -150,18 +150,33 @@ const defaultProjects = [
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(() => {
+    const saved = localStorage.getItem("projectsPerPage");
+    return saved ? parseInt(saved) : 4;
+  });
   const [popupMessage, setPopupMessage] = useState("");
   const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     const loadProjects = async () => {
       setIsLoading(true);
-      const data = await fetchCollection("projects");
+      let data = await fetchCollection("projects");
       if (data.length > 0) {
+        data = data.sort((a, b) => {
+          const aStarred = a.starred === true || a.starred === "true";
+          const bStarred = b.starred === true || b.starred === "true";
+
+          if (aStarred !== bStarred) {
+            return bStarred ? 1 : -1;
+          }
+
+          const aOrder = parseInt(a.displayOrder) || 0;
+          const bOrder = parseInt(b.displayOrder) || 0;
+          return aOrder - bOrder;
+        });
         setProjects(data);
       } else {
-        setProjects(defaultProjects); // Fallback if Firestore is empty or unconfigured
+        setProjects(defaultProjects);
       }
       setIsLoading(false);
     };
@@ -169,7 +184,8 @@ const Projects = () => {
   }, []);
 
   const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 4);
+    const incrementBy = parseInt(localStorage.getItem("projectsPerPage")) || 4;
+    setVisibleCount((prevCount) => prevCount + incrementBy);
   };
 
   const handleDemoClick = (url) => {
@@ -183,13 +199,8 @@ const Projects = () => {
   return (
     <section id="projects" className="mt-8">
       <AlertPopup isOpen={!!popupMessage} message={popupMessage} onClose={() => setPopupMessage("")} />
-      
-      <ImageModal 
-        isOpen={!!modalImage} 
-        imageUrl={modalImage?.url} 
-        title={modalImage?.title} 
-        onClose={() => setModalImage(null)} 
-      />
+
+      <ImageModal isOpen={!!modalImage} imageUrl={modalImage?.url} title={modalImage?.title} onClose={() => setModalImage(null)} />
 
       <div className="mb-12 text-center animate-fade-down" data-aos="fade-down">
         <h3 className="text-3xl sm:text-5xl font-[#202020] uppercase text-[#202020] dark:text-white tracking-tight">Projects Made</h3>
@@ -202,16 +213,10 @@ const Projects = () => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.slice(0, visibleCount).map((project, index) => (
-              <ProjectCard 
-                key={project.id || index} 
-                imageUrl={project.imgSrc || project.imageUrl} 
-                title={project.title} 
-                description={project.description} 
-                tech={project.tech || "Various"} 
-                githubUrl={project.githubLink || project.githubUrl || "#"} 
-                onDemoClick={() => handleDemoClick(project.demoLink || project.link || project.demoUrl)} 
-                onImageClick={() => setModalImage({ url: project.imgSrc || project.imageUrl, title: project.title })}
-              />
+              <div key={project.id || index} className="relative">
+                {project.starred && <div className="absolute top-2 right-2 z-10 text-2xl">⭐</div>}
+                <ProjectCard imageUrl={project.imgSrc || project.imageUrl} title={project.title} description={project.description} tech={project.tech || "Various"} githubUrl={project.githubLink || project.githubUrl || "#"} onDemoClick={() => handleDemoClick(project.demoLink || project.link || project.demoUrl)} onImageClick={() => setModalImage({ url: project.imgSrc || project.imageUrl, title: project.title })} />
+              </div>
             ))}
           </div>
 

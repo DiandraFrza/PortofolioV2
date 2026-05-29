@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, memo } from "react";
 import { FiSend, FiMessageSquare, FiLinkedin, FiInstagram, FiYoutube, FiGithub } from "react-icons/fi";
-import { FaTiktok } from "react-icons/fa";
+import { FaTiktok, FaThumbtack } from "react-icons/fa";
 import { addDocument, subscribeToComments } from "../supabase/services";
 import toast from "react-hot-toast";
 
@@ -261,7 +261,7 @@ function Contact() {
 
                 <SocialCard href="https://www.instagram.com/frzzaaw/" title="Instagram" username="@frzzaw" icon={<FiInstagram size={20} />} />
 
-                <SocialCard href="https://www.linkedin.com/in/diandra-firza-nasywan/" title="LinkedIn" username="@diandra_firza_nasywan" icon={<FiLinkedin size={20} />} />
+                <SocialCard href="https://www.linkedin.com/in/diandra-firza-nasywan/" title="LinkedIn" username="Diandra Firza Nasywan" icon={<FiLinkedin size={20} />} />
 
                 <SocialCard href="https://www.youtube.com/@Avenatic" title="Youtube" username="@Avenatic" icon={<FiYoutube size={20} />} />
 
@@ -340,7 +340,11 @@ function Contact() {
                       <div className="flex justify-between items-start mb-1">
                         <div className="flex items-center gap-2">
                           <h4 className="font-black text-sm text-[#121212] dark:text-white">{comment.name}</h4>
-                          {comment.pinned && <span className="text-yellow-500 text-xs font-black">📌</span>}
+                          {comment.pinned && (
+                            <div className="p-1 rounded-md bg-yellow-400 border border-black dark:border-white shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                              <FaThumbtack className="text-[10px] text-black rotate-45" />
+                            </div>
+                          )}
                         </div>
 
                         <span className="text-[10px] font-bold text-zinc-500">{comment.createdAt ? new Date(comment.createdAt).toLocaleDateString() : "Baru saja"}</span>

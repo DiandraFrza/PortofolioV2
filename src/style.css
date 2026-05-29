@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Poppins', sans-serif;
+  --font-sans: "Poppins", sans-serif;
   --color-electro-purple: #a855f7;
   --color-electro-purple-light: #c084fc;
   --color-electro-purple-dark: #7e22ce;
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20,7 +22,8 @@
 }
 
 /* Allow text selection in inputs and textareas */
-input, textarea {
+input,
+textarea {
   user-select: text;
   -webkit-user-select: text;
   -moz-user-select: text;
@@ -32,8 +35,10 @@ img {
   user-drag: none;
 }
 
+html,
 body {
   overflow-x: hidden;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -298,13 +303,15 @@ body {
 
 /* Scrambling reveal text animation helpers */
 .cursor-blink::after {
-  content: '|';
+  content: "|";
   animation: blink 0.8s infinite steps(2, start);
   color: #a855f7;
 }
 
 @keyframes blink {
-  to { visibility: hidden; }
+  to {
+    visibility: hidden;
+  }
 }
 
 /* Custom AOS modifications for Neobrutalism */

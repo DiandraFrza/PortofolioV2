@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { FiHome, FiMessageSquare, FiFolder, FiAward, FiFileText, FiLogOut, FiMenu, FiX, FiCode, FiMail, FiMessageCircle } from "react-icons/fi";
+import { FiHome, FiMessageSquare, FiFolder, FiAward, FiFileText, FiLogOut, FiMenu, FiX, FiCode, FiMail, FiMessageCircle, FiSettings } from "react-icons/fi";
 import { supabase } from "../../supabase/client";
 import { logoutAdmin } from "../../supabase/auth";
 import Login from "./Login";
@@ -11,6 +11,7 @@ import ManageSkills from "./ManageSkills";
 import ManageCertificates from "./ManageCertificates";
 import ManageMessages from "./ManageMessages";
 import ManageComments from "./ManageComments";
+import ManageSettings from "./ManageSettings";
 import { fetchCollection } from "../../supabase/services";
 
 function DashboardHome() {
@@ -100,6 +101,7 @@ function AdminDashboard() {
     { path: "/admin/certificates", label: "Certificates", icon: <FiAward /> },
     { path: "/admin/messages", label: "Messages", icon: <FiMail /> },
     { path: "/admin/comments", label: "Comments", icon: <FiMessageCircle /> },
+    { path: "/admin/settings", label: "Settings", icon: <FiSettings /> },
   ];
 
   return (
@@ -170,6 +172,7 @@ function AdminDashboard() {
             <Route path="/certificates" element={<ManageCertificates />} />
             <Route path="/messages" element={<ManageMessages />} />
             <Route path="/comments" element={<ManageComments />} />
+            <Route path="/settings" element={<ManageSettings />} />
           </Routes>
         </div>
       </main>

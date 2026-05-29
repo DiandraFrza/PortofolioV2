@@ -60,7 +60,7 @@ function ManageComments() {
         return;
       }
     }
-    
+
     const res = await updateDocument("comments", id, { pinned: !isPinned });
     if (res.success) {
       toast.success(!isPinned ? "Komentar di-pin!" : "Komentar di-unpin!");

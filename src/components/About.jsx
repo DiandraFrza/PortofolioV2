@@ -65,7 +65,7 @@ function About() {
     {
       icon: <GoTrophy size={24} />,
       number: stats.skills,
-      title: "Tech Skills Mastered",
+      title: "Tech Skills",
       description: "Tools, Languages, & Frameworks",
       aosDelay: "300",
       href: "#skills",
@@ -104,7 +104,7 @@ function About() {
               <span>Download CV</span>
             </a>
 
-            <a href="#portofolio" onClick={(e) => handleScrollClick(e, 'portofolio')} className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn-white text-center text-sm" data-aos="fade-up" data-aos-delay="100">
+            <a href="#portofolio" onClick={(e) => handleScrollClick(e, "portofolio")} className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn-white text-center text-sm" data-aos="fade-up" data-aos-delay="100">
               <img src={iconproject} alt="Project Icon" className="w-5 h-5 inline-block mr-2 ml-1 brightness-0" />
               <span>Lihat Proyek</span>
             </a>
@@ -118,24 +118,27 @@ function About() {
                 <div className="w-12 h-12 rounded-xl border-2 border-[#202020] bg-[#a855f7] text-white flex items-center justify-center shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4">
                   <GoTerminal size={24} />
                 </div>
-                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Software Development</h4>
-                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Membangun website modern dengan fokus pada performa, interaktivitas, dan pengalaman pengguna.</p>
+                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Database & Cloud</h4>
+
+                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Mengelola database, hosting, VPS, dan deployment website untuk kebutuhan development maupun production sederhana.</p>
               </div>
 
               <div className="neo-card rounded-2xl p-6 bg-white dark:bg-zinc-800 flex flex-col items-start">
                 <div className="w-12 h-12 rounded-xl border-2 border-[#202020] bg-[#a855f7] text-white flex items-center justify-center shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4">
                   <GoDatabase size={24} />
                 </div>
-                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Database & Systems</h4>
-                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Merancang dan mengelola database MySQL, optimasi query, serta deployment aplikasi pada server lokal maupun cloud. Mengelola Search Engine Optimization dan Google Console</p>
+                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Database & Cloud</h4>
+
+                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Mengelola database, hosting, VPS, dan deployment website untuk kebutuhan development maupun production sederhana.</p>
               </div>
 
               <div className="neo-card rounded-2xl p-6 bg-white dark:bg-zinc-800 flex flex-col items-start">
                 <div className="w-12 h-12 rounded-xl border-2 border-[#202020] bg-[#a855f7] text-white flex items-center justify-center shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4">
                   <GoGear size={24} />
                 </div>
-                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Operations & Admin</h4>
-                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Menangani troubleshooting perangkat, administrasi sistem, serta membantu otomatisasi pekerjaan operasional.</p>
+                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Design & Operations</h4>
+
+                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Mendesain antarmuka digital, menangani troubleshooting perangkat, serta membantu kebutuhan operasional berbasis teknologi.</p>
               </div>
             </div>
           </div>
