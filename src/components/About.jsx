@@ -17,30 +17,50 @@ function About() {
     }
   };
 
-  const [stats, setStats] = useState({
-    projects: "0",
-    certificates: "0",
-    skills: "0",
-  });
+  // Initialize from localStorage cache for instant display
+  const getCachedStats = () => {
+    const cached = localStorage.getItem("portfolioStats");
+    if (cached) {
+      try {
+        return JSON.parse(cached);
+      } catch (e) {
+        return { projects: "0", certificates: "0", skills: "0" };
+      }
+    }
+    return { projects: "0", certificates: "0", skills: "0" };
+  };
+
+  const [stats, setStats] = useState(getCachedStats());
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadStats = async () => {
-      const [proj, cert, skillData] = await Promise.all([fetchCollection("projects"), fetchCollection("certificates"), fetchCollection("skills")]);
+      try {
+        const [proj, cert, skillData] = await Promise.all([fetchCollection("projects"), fetchCollection("certificates"), fetchCollection("skills")]);
 
-      let totalSkills = 0;
-      if (skillData && skillData.length > 0) {
-        skillData.forEach((s) => {
-          if (Array.isArray(s.items)) {
-            totalSkills += s.items.length;
-          }
-        });
+        let totalSkills = 0;
+        if (skillData && skillData.length > 0) {
+          skillData.forEach((s) => {
+            if (Array.isArray(s.items)) {
+              totalSkills += s.items.length;
+            }
+          });
+        }
+
+        const newStats = {
+          projects: proj.length > 0 ? proj.length.toString() : "0",
+          certificates: cert.length > 0 ? cert.length.toString() : "0",
+          skills: totalSkills > 0 ? totalSkills.toString() : "0",
+        };
+
+        setStats(newStats);
+        // Save to localStorage for faster loading next time
+        localStorage.setItem("portfolioStats", JSON.stringify(newStats));
+      } catch (error) {
+        console.error("Error loading stats:", error);
+      } finally {
+        setIsLoading(false);
       }
-
-      setStats({
-        projects: proj.length > 0 ? proj.length.toString() : "0",
-        certificates: cert.length > 0 ? cert.length.toString() : "0",
-        skills: totalSkills > 0 ? totalSkills.toString() : "0",
-      });
     };
     loadStats();
   }, []);
@@ -91,7 +111,7 @@ function About() {
 
           {/* Cartoon Quote Callout */}
           <div className="p-4 border-3 border-[#202020] dark:border-white/90 bg-[#a855f7]/30 rounded-xl mb-8 border-dashed max-w-2xl relative" data-aos="fade-left">
-            <div className="absolute -top-3 -right-3 bg-yellow-300 border-2 border-[#202020] dark:border-white/90 rounded-full p-2 rotate-12 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <div className="absolute -top-5 -right-3 bg-yellow-300 border-2 border-[#202020] dark:border-white/90 rounded-full p-2 rotate-12 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
               <span className="text-[#202020] font-black text-xs">READY!</span>
             </div>
             <p className="text-base font-[#202020] italic text-[#202020] dark:text-white">"Code is how I express ideas. Tech is how I shape them."</p>
@@ -100,7 +120,7 @@ function About() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <a href="https://drive.google.com/file/d/1xWjonCkjaJOZqL9CCGlfNremdmTDw8ne/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn text-center text-sm" data-aos="fade-up">
-              <img src={iconfile} alt="Download Icon" className="w-5 h-5 invert inline-block mr-2 ml-1 brightness-0" />
+              <img src={iconfile} alt="Download Icon" className="w-5 h-5 invert inline-block mr-2 ml-1 brightness-0 invert" />
               <span>Download CV</span>
             </a>
 
@@ -118,9 +138,9 @@ function About() {
                 <div className="w-12 h-12 rounded-xl border-2 border-[#202020] bg-[#a855f7] text-white flex items-center justify-center shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4">
                   <GoTerminal size={24} />
                 </div>
-                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Database & Cloud</h4>
+                <h4 className="text-lg font-[#202020] uppercase tracking-wide mb-2 text-[#202020] dark:text-white">Software Development</h4>
 
-                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Mengelola database, hosting, VPS, dan deployment website untuk kebutuhan development maupun production sederhana.</p>
+                <p className="text-xs sm:text-sm font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">Membuat website modern dengan fokus pada tampilan yang nyaman, responsif, dan mudah digunakan.</p>
               </div>
 
               <div className="neo-card rounded-2xl p-6 bg-white dark:bg-zinc-800 flex flex-col items-start">

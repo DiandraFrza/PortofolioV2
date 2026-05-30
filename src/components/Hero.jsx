@@ -149,13 +149,13 @@ function Hero() {
             <p
               className="text-base md:text-lg font-bold text-zinc-700 dark:text-zinc-300 mb-6 max-w-lg"
               data-aos="fade-right"
-              data-aos-delay="1300"
+              data-aos-delay="200"
             >
               Menghadirkan solusi digital yang andal, mulai dari pengelolaan data, sistem server, hingga antarmuka interaktif.
             </p>
 
             {/* Animasi Typing */}
-            <div className="mb-8 min-h-[60px]" data-aos="fade-right" data-aos-delay="1500">
+            <div className="mb-8 min-h-[60px]" data-aos="fade-right" data-aos-delay="100">
               <TypeAnimation
                 sequence={[
                   "Solving Problems with Technology.",
@@ -173,10 +173,10 @@ function Hero() {
             </div>
 
             {/* Tombol Show Skills Badges */}
-            <div className="flex flex-wrap gap-2 mb-8" data-aos="fade-right" data-aos-delay="1700">
+            <div className="flex flex-wrap gap-2 mb-8" data-aos="fade-right" data-aos-delay="100">
               <span className="neo-badge px-4 py-1.5 rounded-lg text-xs">Design</span>
               <span className="neo-badge px-4 py-1.5 rounded-lg text-xs">Web Dev</span>
-              <span className="neo-badge px-4 py-1.5 rounded-lg text-xs">Database</span>
+              {/* <span className="neo-badge px-4 py-1.5 rounded-lg text-xs">Database</span> */}
               <span className="neo-badge px-4 py-1.5 rounded-lg text-xs">IT Support</span>
             </div>
 
@@ -186,23 +186,23 @@ function Hero() {
                 href="#portofolio"
                 className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn text-center"
                 data-aos="fade-up"
-                data-aos-delay="1900"
+                data-aos-delay="100"
               >
                 <span>Projects</span>
-                <img src={iconSign} alt="Projects Link" className="w-5 h-5 invert inline-block ml-1" />
+                <img src={iconSign} alt="Projects Link" className="w-5 h-5 invert inline-block ml-1 dark:brightness-0" />
               </a>
 
               <a
                 href="#contact"
                 className="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-btn-white text-center"
                 data-aos="fade-up"
-                data-aos-delay="2100"
+                data-aos-delay="200"
               >
                 <span>Message</span>
                 <img
   src={iconHi}
   alt="Hi Icon"
-  className="w-5 h-5 inline-block ml-1 brightness-0"
+  className="w-5 h-5 inline-block ml-1 dark:brightness-0 invert"
  />
               </a>
             </div>
@@ -210,7 +210,7 @@ function Hero() {
 
           {/* === KOLOM KANAN (Foto Profil) === */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[280px] sm:max-w-[320px]" data-aos="zoom-in" data-aos-delay="600">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px]" data-aos="zoom-in" data-aos-delay="200">
               {/* Offset flat purple cartoon shadow */}
               <div className="absolute inset-0 bg-[#a855f7] border-4 border-black rounded-3xl translate-x-4 translate-y-4"></div>
               {/* Main image container */}
